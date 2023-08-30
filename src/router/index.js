@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Home from '@/pages/Home'
+import CarItem from '@/pages/CarItem'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -8,6 +9,11 @@ const router = createRouter({
         path: "/",
         name: "Home",
         component: Home,
+      },
+      {
+        path:'/CarItem',
+        name:'CarItem',
+        component:CarItem,
       },
       {
         path: '/:catchAll(.*)',

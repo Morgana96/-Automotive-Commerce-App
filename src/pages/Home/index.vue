@@ -1,50 +1,54 @@
 <template>
     <div class="welcome-banner">
+
     <div class="text">
       <h1>Welcome to AutoLuxe Cars</h1>
       <h3>All the cars. One search</h3>
+      <router-link to="/CarItem">
+      <button>START</button>
+    </router-link>
     </div>
+
     
-    <button>START</button>
   </div>
+    
 </template>
 
 <script>
 export default {
-    name:'Home'
+    name:'Home',
 }
 </script>
 
 <style>
-body {
-  margin: 0;
-    padding: 0;
-    background-image: url('./CarBG.jpg'); /* 替换为您的背景图像路径 */
-    background-size: cover;
-    background-position: center center;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-repeat: no-repeat;
+.welcome-banner {
+  background-image: url('./CarBG.jpg');
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.center-content {
+  display: flex;
+  text-align: center;
 }
 .text{
-  margin-top: 15vw;
+  margin-top: 10vw;
 }
-
-.welcome-banner {
-    text-align: center;
-    border-radius: 10px;
-    color: white;
-}
-
 h1 {
     font-weight: bold;
-    font-size: 4vw;
+    font-size: 3vw;
 }
 h3{
   font-size: 2vw;
+  font-weight: lighter;
   color: rgb(205, 208, 213);
 }
 button {
