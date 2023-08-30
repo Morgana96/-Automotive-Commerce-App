@@ -1,9 +1,7 @@
 <template>
     <header>
-        
         <img src="./carLogo.jpg" alt="">
         <p> AutoLuxe Cars</p>
-      
     </header>
     
 </template>
@@ -35,7 +33,7 @@ header {
     z-index: 1; /* 提高层级，确保内容在上层 */
 }
 p{
-  color: rgb(218, 194, 194);
+  color: rgb(205, 208, 213);
   margin-left: auto;
   margin-right: 3vw;
   font-size: 1.1em;
