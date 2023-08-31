@@ -1,7 +1,9 @@
 <template>
     <header>
-      <img src="./carLogo.jpg" alt="">
-      
+      <router-link class="logo-container" to="/Home">
+        <img src="./carLogo.jpg" alt="">
+      </router-link>
+
       <div class="search-area">
           <input v-model="keyword" type="text" placeholder="Search...">
           <button @click="handleSearch">Search</button>
@@ -36,8 +38,20 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
 }
+
+.logo-container {
+  width: 150px; 
+  height: 150px;
+  overflow: hidden; 
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+}
+
 header {
-    background-color: #040404; /* 背景颜色 */
+    background-color: #040404; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 阴影效果 */
     display: flex;
     justify-content: flex-start; 
@@ -78,9 +92,5 @@ p{
   margin-right: 3vw;
   font-size: 1.1em;
 }
-img {
-    max-height: 180%;
-}
-
 
 </style>
