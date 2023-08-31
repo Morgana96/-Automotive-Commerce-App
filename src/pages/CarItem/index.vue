@@ -16,12 +16,15 @@
   <script>
   import {ref, onMounted} from 'vue'
   import axios from 'axios'
+  import { useRoute } from 'vue-router';
 
   export default {
     name:'CarItem',
     setup(){
         const items = ref([])
-
+        const route = useRoute()
+        const keyword = route.params.keyword || ''
+        console.log(keyword);
         const fetchData = async () => {
             try{
                 const response = await axios.get('https://gist.githubusercontent.com/joaofs/6a4eb62499572a29485ac5924a0c9e64/raw/97ac2191e65fb6d84f6f336dc8867efbc97410a3/cars.json')
@@ -32,6 +35,8 @@
             }
             
         }
+
+
         onMounted(()=>{
             fetchData()
             

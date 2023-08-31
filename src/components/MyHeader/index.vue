@@ -3,8 +3,8 @@
         <img src="./carLogo.jpg" alt="">
        
         <div class="search-area">
-            <input type="text" placeholder="Search...">
-            <button @click="search">Search</button>
+            <input v-model="keyword" type="text" placeholder="Search...">
+            <button @click="goSearch">Search</button>
         </div>
         <p> AutoLuxe Cars</p>
     </header>
@@ -12,9 +12,22 @@
 </template>
 
 <script>
+import { useRoute } from 'vue-router';
 export default {
-  name:'MyHeader'
-}
+ 
+  name: 'MyHeader',
+  data() {
+    return {
+      keyword: ''
+    };
+  },
+  methods: {
+    goSearch() {
+      this.$router.push({ name: 'CarItem', params: { keyword: this.keyword } });
+    }
+  
+
+}}
 </script>
 
 <style scoped>

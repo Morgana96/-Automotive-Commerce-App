@@ -11,7 +11,7 @@ const router = createRouter({
         component: Home,
       },
       {
-        path:'/CarItem',
+        path:'/CarItem/:keyword?',
         name:'CarItem',
         component:CarItem,
       },
