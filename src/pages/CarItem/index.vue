@@ -24,25 +24,33 @@
         const items = ref([])
         const route = useRoute()
         const keyword = route.params.keyword || ''
+
         console.log(keyword);
+
         const fetchData = async () => {
             try{
                 const response = await axios.get('https://gist.githubusercontent.com/joaofs/6a4eb62499572a29485ac5924a0c9e64/raw/97ac2191e65fb6d84f6f336dc8867efbc97410a3/cars.json')
-                items.value = response.data
-                console.log(items.value);
+                items.value = response.data.filter(item =>{
+                  return (
+                  item.make.toLowerCase().includes(keyword.toLowerCase())||
+                  item.model.toLowerCase().includes(keyword.toLowerCase())||
+                  item.description.toLowerCase().includes(keyword.toLowerCase())
+                  
+                  )
+                })
             } catch(error){
                alert(error.message)
             }
-            
         }
-
-
+       
         onMounted(()=>{
             fetchData()
             
         })
         return {
-            items
+            items,
+           
+            
         }
     }
   }
@@ -53,7 +61,7 @@
     display: flex;
     justify-content: center;
     padding: 20px;
-    height: 100%;
+    height: 100vh;
     background-color: #131313;
 }
 .product-list {
