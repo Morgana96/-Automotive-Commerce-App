@@ -1,20 +1,19 @@
 <template>
     <header>
-        <img src="./carLogo.jpg" alt="">
-       
-        <div class="search-area">
-            <input v-model="keyword" type="text" placeholder="Search...">
-            <button @click="goSearch">Search</button>
-        </div>
-        <p> AutoLuxe Cars</p>
+      <img src="./carLogo.jpg" alt="">
+      
+      <div class="search-area">
+          <input v-model="keyword" type="text" placeholder="Search...">
+          <button @click="handleSearch">Search</button>
+      </div>
+      <p> AutoLuxe Cars</p>
     </header>
     
 </template>
 
 <script>
-import { useRoute } from 'vue-router';
+
 export default {
- 
   name: 'MyHeader',
   data() {
     return {
@@ -22,8 +21,9 @@ export default {
     };
   },
   methods: {
-    goSearch() {
+    handleSearch() {
       this.$router.push({ name: 'CarItem', params: { keyword: this.keyword } });
+    
     }
   
 
@@ -42,9 +42,11 @@ header {
     display: flex;
     justify-content: flex-start; 
     align-items: center;
-    height: 5vw; 
+    height: 50px; 
     width: 100%; 
     overflow: hidden;
+   
+    position: fixed;
 }
 .search-area {
     margin-left: auto;
