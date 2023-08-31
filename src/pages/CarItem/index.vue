@@ -17,7 +17,7 @@
   import {ref, onMounted, watch} from 'vue'
   import axios from 'axios'
   import { useRoute } from 'vue-router';
-
+  import {fetchCarsData} from '@/api/index'
 
   export default {
     name:'CarItem',
@@ -27,26 +27,25 @@
       const keyword = ref(route.params.keyword || '')
 
       console.log(keyword);
+      console.log(fetchCarsData());
 
-      const fetchData = async () => {
+      const fetchData = async () =>{
         try{
-          const response = await axios.get('https://gist.githubusercontent.com/joaofs/6a4eb62499572a29485ac5924a0c9e64/raw/97ac2191e65fb6d84f6f336dc8867efbc97410a3/cars.json')
-          items.value = response.data.filter(item =>{
-            return (
-            item.make.toLowerCase().includes(keyword.value.toLowerCase())||
-            item.model.toLowerCase().includes(keyword.value.toLowerCase())||
+          const response = await fetchCarsData()
+          items.value = response.data.filter(item => {
+          return (
+            item.make.toLowerCase().includes(keyword.value.toLowerCase()) ||
+            item.model.toLowerCase().includes(keyword.value.toLowerCase()) ||
             item.description.toLowerCase().includes(keyword.value.toLowerCase())
-            
-            )
-          })
-        }catch(error){
-          alert(error.message)
-        }
+          );
+        })
+        }catch (error) {
+        console.error(error);
       }
-      
+      }
+
       onMounted(()=>{
-          fetchData()
-  
+        fetchData()
       })
 
       watch(() => route.params.keyword, (newValue, oldValue) => {
@@ -55,12 +54,11 @@
       fetchData()
       })
 
-
       return {
           items,
       }
-    }
-  }
+    
+    }}
   </script>
   
   <style scoped>
