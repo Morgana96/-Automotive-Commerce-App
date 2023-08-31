@@ -5,7 +5,7 @@
       </router-link>
 
       <div class="search-area">
-          <input v-model="keyword" type="text" placeholder="Search...">
+          <input v-model="keyword" @keydown="handleKeyDown" type="text" placeholder="Search...">
           <button @click="handleSearch">Search</button>
       </div>
       <p> AutoLuxe Cars</p>
@@ -26,6 +26,12 @@ export default {
     handleSearch() {
       this.$router.push({ name: 'CarItem', params: { keyword: this.keyword } });
     
+    },
+
+    handleKeyDown(e){
+      if(e.keyCode == 13){
+        this.handleSearch()
+      }
     }
   
 
