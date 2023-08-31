@@ -1,6 +1,11 @@
 <template>
     <header>
         <img src="./carLogo.jpg" alt="">
+       
+        <div class="search-area">
+            <input type="text" placeholder="Search...">
+            <button @click="search">Search</button>
+        </div>
         <p> AutoLuxe Cars</p>
     </header>
     
@@ -27,8 +32,30 @@ header {
     height: 5vw; 
     width: 100%; 
     overflow: hidden;
-   
-   
+}
+.search-area {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding: 0.2em;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-area input {
+    padding: 0.5em;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    width: 20vw;
+}
+
+.search-area button {
+    display: flex;
+    padding: 0.5em 1em;
+    background-color: #8ba5c2;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    color: white;
+    cursor: pointer;
 }
 p{
   color: rgb(205, 208, 213);

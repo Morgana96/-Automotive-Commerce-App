@@ -1,10 +1,9 @@
 <template>
     <div class="welcome-banner">
-
     <div class="text">
       <h1>Welcome to AutoLuxe Cars</h1>
       <h3>All the cars. One search</h3>
-      <router-link to="/CarItem">
+      <router-link to="/CarItem" class="z-index">
       <button>START</button>
     </router-link>
     </div>
@@ -20,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .welcome-banner {
   background-image: url('./CarBG.jpg');
   background-size: cover;

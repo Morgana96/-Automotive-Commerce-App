@@ -72,6 +72,7 @@
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #303030;
   }
   
   .product-description {
