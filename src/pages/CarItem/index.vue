@@ -1,7 +1,9 @@
 <template>
     <div class="product-container">
+   
       <ul class="product-list">
-        <!-- Repeat this li element for each product -->
+        <p class="text" v-show="items.length==0" >Sorry, there is no result for search</p>
+        
         <li class="product-item" v-for="item in items" :key = 'item.id'>
           <h3 class="product-title">{{item.make+' '+item.model}}</h3>
           <p class="product-description">{{item.description}}</p>
@@ -15,7 +17,6 @@
   
   <script>
   import {ref, onMounted, watch} from 'vue'
-  import axios from 'axios'
   import { useRoute } from 'vue-router';
   import {fetchCarsData} from '@/api/index'
 
@@ -40,7 +41,7 @@
           );
         })
         }catch (error) {
-        console.error(error);
+        alert(error.message)
       }
       }
 
@@ -62,6 +63,13 @@
   </script>
   
   <style scoped>
+
+.text{
+  color: white;
+  font-size: 3vh;
+  text-align: center;
+  margin-top: 20vh;
+}
 .product-container {
     display: flex;
     justify-content: center;

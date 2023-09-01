@@ -8,7 +8,7 @@
           <input v-model="keyword" @keydown="handleKeyDown" type="text" placeholder="Search...">
           <button @click="handleSearch">Search</button>
       </div>
-      <p> AutoLuxe Cars</p>
+      <p> MotorK</p>
     </header>
     
 </template>

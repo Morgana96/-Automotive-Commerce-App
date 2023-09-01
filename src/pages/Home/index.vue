@@ -1,29 +1,62 @@
 <template>
+  <div>
     <div class="welcome-banner">
+      <ul>
+      <li v-for="item in items" :key="item.id">{{ item.make+''+ item.model }}</li>
+    </ul>
     <div class="text">
-      <h1>Welcome to AutoLuxe Cars</h1>
+      <h1>Welcome to MotorK</h1>
       <h3>All the cars. One search</h3>
       <router-link to="/CarItem" class="z-index">
       <button>START</button>
     </router-link>
     </div>
-
+  </div>
     
   </div>
     
 </template>
 
 <script>
+import {fetchCarsData} from '@/api/index'
+import {ref, onMounted } from 'vue'
+
 export default {
     name:'Home',
+
+    setup(){
+      const items = ref([])
+      const fetchData = async () =>{
+        try {
+          const response = await fetchCarsData()
+          items.value = response.data
+          console.log(items.value);
+        } catch (error) {
+          alert(error.message)
+        }
+      }
+
+      onMounted(()=>{
+        fetchData()
+      })
+
+      return{
+        items
+      }
+    }
 }
 </script>
 
 <style scoped>
+html, body {
+  height: 100%;
+  overflow: hidden;
+  
+}
 .welcome-banner {
   background-image: url('./CarBG.jpg');
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -31,9 +64,25 @@ export default {
   align-items: center;
   text-align: center;
   background-repeat: no-repeat;
-  color: white;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
 }
-
+.welcome-banner ul{
+  margin-top: 60px;
+  list-style: none; 
+  position: absolute; 
+  top: 0; 
+  left: 0;
+  right: 0;
+  display: flex;
+  
+  flex-wrap: wrap
+}
+li{
+  margin-left: 3.5vw;
+  margin-top: 1vh;
+  color: rgb(162, 161, 182);
+}
 .center-content {
   display: flex;
   text-align: center;
@@ -53,9 +102,9 @@ h3{
 button {
   margin-top: 10vw;
   padding: 30px 40px;
-  background-color: rgba(0, 0, 0, 0); /* 透明背景 */
+  background-color: rgba(0, 0, 0, 0); 
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.5); /* 边框效果 */
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   font-size: 3vw;
   cursor: pointer;
@@ -63,9 +112,9 @@ button {
 }
 
 button:hover {
-  border-color: rgba(255, 255, 255, 0.7); /* 鼠标悬停时的边框颜色 */
+  border-color: rgba(255, 255, 255, 0.7);
   transform: scale(1.05);
-  background-color: rgba(0, 0, 0, 0.4); /* 鼠标悬停时的背景颜色 */
+  background-color: rgba(0, 0, 0, 0.4); 
 }
 
 </style>
