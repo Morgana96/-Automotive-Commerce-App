@@ -14,26 +14,31 @@
 </template>
 
 <script>
+import {ref } from 'vue'
+import {useRouter} from 'vue-router'
 
 export default {
-  name: 'MyHeader',
-  data() {
-    return {
-      keyword: ''
-    };
-  },
-  methods: {
-    handleSearch() {
-      this.$router.push({ name: 'CarItem', params: { keyword: this.keyword } });
-    
-    },
 
-    handleKeyDown(e){
-      if(e.keyCode == 13){
-        this.handleSearch()
+  name: 'MyHeader',
+  setup() {
+    const keyword = ref('');
+    const router = useRouter();
+
+    const handleSearch = () => {
+      router.push({ name: 'CarItem', params: { keyword: keyword.value } });
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.keyCode === 13) {
+        handleSearch();
       }
-    }
-  
+    };
+
+    return {
+      keyword,
+      handleSearch,
+      handleKeyDown
+    };
 
 }}
 </script>
