@@ -2,7 +2,12 @@
   <div>
     <div class="welcome-banner">
       <ul>
-      <li v-for="item in items" :key="item.id">{{ item.make+''+ item.model }}</li>
+      <li 
+        @click="() => handleSearch(item.make)"
+        v-for="item in items" 
+        :key="item.id">
+        {{ item.make+' '+ item.model }}
+      </li>
     </ul>
     <div class="text">
       <h1>Welcome to MotorK</h1>
@@ -20,12 +25,15 @@
 <script>
 import {fetchCarsData} from '@/api/index'
 import {ref, onMounted } from 'vue'
+import {useRouter} from 'vue-router'
 
 export default {
     name:'Home',
 
     setup(){
       const items = ref([])
+      const router = useRouter()
+
       const fetchData = async () =>{
         try {
           const response = await fetchCarsData()
@@ -36,12 +44,18 @@ export default {
         }
       }
 
+      const handleSearch = (make) =>{
+        router.push({name:'CarItem', params:{keyword : make}})
+        console.log(111);
+      }
+
       onMounted(()=>{
         fetchData()
       })
 
       return{
-        items
+        items,
+        handleSearch
       }
     }
 }
@@ -92,21 +106,21 @@ li{
 }
 h1 {
     font-weight: bold;
-    font-size: 3vw;
+    font-size: 2.3vw;
 }
 h3{
-  font-size: 2vw;
+  font-size: 1.3vw;
   font-weight: lighter;
   color: rgb(205, 208, 213);
 }
 button {
-  margin-top: 10vw;
+  margin-top: 7vw;
   padding: 30px 40px;
   background-color: rgba(0, 0, 0, 0); 
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
-  font-size: 3vw;
+  font-size: 2vw;
   cursor: pointer;
   transition: border-color 0.3s, transform 0.3s;
 }
