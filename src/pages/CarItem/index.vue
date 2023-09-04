@@ -1,17 +1,17 @@
 <template>
-    <div class="product-container">
-   
-      <ul class="product-list">
-        <p class="text" v-show="items.length==0" >Sorry, there is no result for search</p>
-        
-        <li class="product-item" v-for="item in items" :key = 'item.id'>
-          <h3 class="product-title">{{item.make+' '+item.model}}</h3>
-          <p class="product-description">{{item.description}}</p>
-          <p class="product-price">${{item.price}}</p>
-          <p class="product-features">{{item.features}}</p>
-            <p class="product-mileage">Mileage:{{ item.mileage }}</p>
-        </li>
-      </ul>
+    <div class="bg-gray-900 min-h-screen w-full">
+      <div class="flex justify-center">
+        <p class="text-white text-3xl absolute text-center mt-20 " v-show="items.length==0">Sorry, there is no result for searching</p>
+        <ul class="list-none grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-1 w-full my-14">
+          <li class="bg-gray-300 p-5 pb-10 placeholder-amber-700 m-2 rounded-lg" v-for="item in items" :key ='item.id'>
+            <h3 class="text-lg font-bold">{{item.make+' '+item.model}}</h3>
+            <p class="text-gray-400">{{item.description}}</p>
+            <p class="">${{item.price}}</p>
+            <p class="">{{item.features}}</p>
+              <p class="text-gray-500">Mileage:{{ item.mileage }}</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </template>
   
@@ -61,68 +61,4 @@
     
     }}
   </script>
-  
-  <style scoped>
-
-.text{
-  color: white;
-  font-size: 3vh;
-  text-align: center;
-  margin-top: 20vh;
-}
-.product-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    height: 100%;
-    background-color: #131313;
-    min-height: 100vh;
-
-}
-.product-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px 20px;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    margin-top: 50px;
-}
-.product-item {
-  background-color: #dadada;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 200px;
-}
-  
-  .product-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #303030;
-  }
-  
-  .product-description {
-    margin: 5px 0;
-    color: #666;
-  }
-  
-  .product-price {
-    font-size: 1.2rem;
-    color: #333;
-    margin-top: 10px;
-  }
-  
-  .product-features {
-    color: #666;
-    margin-top: 5px;
-  }
-  
-  .product-mileage {
-    color: #666;
-    margin-top: 5px;
-  }
-  </style>
   

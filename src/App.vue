@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MyHeader :keyword = 'keyword' @search-request="handleSearchRequest"></MyHeader>
+    <MyHeader></MyHeader>
     <router-view></router-view>
   </div>
 </template>
