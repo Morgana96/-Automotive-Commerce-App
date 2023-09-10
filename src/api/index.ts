@@ -8,6 +8,6 @@ export async function fetchCarsData() {
     return response
     }
    catch (error) {
-    alert(error.message)
+    alert((error as Error).message)
   }
 }

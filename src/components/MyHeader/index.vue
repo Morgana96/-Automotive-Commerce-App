@@ -1,7 +1,7 @@
 <template>
     <header class=" overflow-hidden bg-black flex items-center justify-between h-12 w-full fixed top-0 left-0">
       <router-link  to="/Home">
-        <img class="ml-2 object-cover w-28" src="./carLogo.jpg" alt="">
+        <img class="ml-2 object-cover w-28" src="@/assets/carLogo.jpg" alt="">
       </router-link>
 
       <div class="flex justify-center w-30">
@@ -18,11 +18,11 @@
     
 </template>
 
-<script>
-import {ref } from 'vue'
+<script lang="ts">
+import {ref, defineComponent } from 'vue'
 import {useRouter} from 'vue-router'
 
-export default {
+export default defineComponent( {
   name: 'MyHeader',
   setup() {
     const keyword = ref('');
@@ -33,8 +33,8 @@ export default {
       keyword.value = ''
     };
 
-    const handleKeyDown = (e) => {
-      if (e.keyCode === 13) {
+    const handleKeyDown = (e:KeyboardEvent) => {
+      if (e.key === 'Enter') {
         handleSearch();
       }
     };
@@ -45,6 +45,6 @@ export default {
       handleKeyDown
     };
 
-}}
+}})
 </script>
 

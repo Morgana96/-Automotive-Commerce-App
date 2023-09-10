@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import Home from '@/pages/Home'
-import CarItem from '@/pages/CarItem'
+import Home from '@/pages/Home/index.vue'
+import CarItem from '@/pages/CarItem/index.vue'
 
 const router = createRouter({
     history: createWebHistory(),

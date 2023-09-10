@@ -1,19 +1,21 @@
 <template>
-  <div>
+    <div>
     <MyHeader></MyHeader>
     <router-view></router-view>
   </div>
+ 
 </template>
 
-<script>
-import MyHeader from './components/MyHeader'
+<script lang="ts">
+import { defineComponent } from 'vue';
+import MyHeader from './components/MyHeader/index.vue'
 
-export default {
-  name:'App',
-  components:{
+export default defineComponent({
+  name: 'App',
+  components: {
     MyHeader
   }
-}
+});
 </script>
 
 <style>
